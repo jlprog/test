@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 from sofr_curve import SOFRCurve, add_tenor
-from market_data import get_instruments, snapshot_dates
+from market_data import get_instruments, snapshot_dates, data_source_info
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -213,7 +213,10 @@ def print_summary(curves: dict[date, SOFRCurve]):
 # ---------------------------------------------------------------------------
 
 def main():
-    print("\nBuilding SOFR OIS curves for the last 3 months...\n")
+    print("\nBuilding SOFR OIS curves for the last 3 months...")
+    # trigger fetch (prints data-source banner)
+    _ = get_instruments(snapshot_dates()[0])
+    print(f"Data source : {data_source_info()}\n")
 
     curves: dict[date, SOFRCurve] = {}
     for val_date in snapshot_dates():
