@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "repo-curve"
+version = "0.1.0"
+description = "Term structure model for repurchase-agreement (repo) financing rates"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["repo_curve*"]
